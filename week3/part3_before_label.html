@@ -35,10 +35,6 @@
 					.attr("height", h+100)
 					.append("g")
 					.attr("transform", "translate(50, 50)");
-		var xaxis = svg
-					  .axis()
-					  .scale(xscale)
-					  .tickFormat(function(d,i){return MONTH[i];});
 
 //color
 		var color = d3.scaleOrdinal(d3.schemeCategory10);
