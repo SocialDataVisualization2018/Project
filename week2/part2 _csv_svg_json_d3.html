@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 json for multiple Retangular drawing</title>
+        <script type="text/javascript" src="../d3/d3.js"></script>
+    </head>
+    <body>
+		<script type="text/javascript">
+            // Your beautiful D3 code will go here
+			var dataset;
+			var textStyle = function(data) {
+				d3.select("body").selectAll("p")
+				.data(data)
+				.enter()
+				.append("p")
+				.text(function(d) {
+					return "I can count up to " + d.Data;
+				})
+				.style("color", function(d) {
+					if (parseInt(d.Data) > 15) {	//Threshold of 15
+						return "red";
+					} else {
+						return "black";
+					}
+				});
+			}
+
+			d3.csv("num.csv", function(error, data) {
+				if (error) {
+					console.log(error);				
+				} else {
+					console.log(data);				
+				}
+				dataset = data;
+				textStyle(dataset);
+			});
+        </script>
+    </body>
+	<body>
+		<script type="text/javascript">
+			var jsonRect = [
+				{ "x": 80, "y": 0, "width" : "80", "height" : "80", "color" : "green" },
+				{ "x": 60, "y": 5, "width" : "80", "height" : "80", "color" : "purple"},
+				{ "x": 40, "y": 10, "width" : "80", "height" : "80", "color" : "red"}];
+			var svg = d3.select("body").append("svg")
+            						   .attr("width", 500)
+            						   .attr("height", 100);
+			var rects = svg.selectAll("rect")
+						   .data(jsonRect)
+						   .enter()
+						   .append("rect");
+			var rectAttributes = rects
+								 .attr("x", function (d) { return d.x; })
+								 .attr("y", function (d) { return d.y; })
+								 .attr("width", function (d) { return d.width; })
+								 .attr("height", function (d) { return d.height; })
+								 .style("fill", function (d) { return d.color; });
+
+			//page 53
+		 </script>
+	</body>
+</html>

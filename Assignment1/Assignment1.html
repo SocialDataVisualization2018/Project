@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Assignment1</title>
+        <script type="text/javascript" src="d3/d3.js"></script>
+		<!-- div  background-color: red; css-->
+		<style type="text/css">
+
+			header, footer {
+    			padding: 1em;
+    			color: white;
+    			background-color: black;
+    			clear: left;
+    			text-align: center;
+			}
+
+			article {
+				margin-left: 170px;
+				margin-right: 170px;
+				padding: 1em;
+				overflow: hidden;
+			}
+		
+		</style>
+    </head>
+    <body>
+		<div class="container">
+		<header>Assignment 1</header>
+		
+		<article>
+			<h2>Part 1: DAOST Chapter 2 Questions</h2>
+			<li>Explain in your own words the point of the jitter plot.</li>
+		
+			<p>
+			A dot plot can be used to represent a data set along the horizontal axis. 
+			Trivially if a certain data occurs more than once, the corresponding data points 				overlapps on the plot. Jittering is common solution which shifts each points by 
+			small random amount from its original position. The amount should be kept to not 				shift significantly from their true location
+			</p>
+			<p>
+			Figure 2-1 upper plot with cross marks is without jittering. The plot on the bottom 			with circle marks is with jittering which is more significant to tell the expected 				tenure are at 48 and 96 months.
+			<p/>
+			<li>Explain in your own words the point of figure 2-3.</li>
+			
+			<p>
+			Figure 2-3 are two histograms of the same data set. The upper one align the bin 
+			width 1 between whole number, the lower one are centering the bin width one whole 
+			number. These particular alignment and bin width choice makes the same histogram 
+			look different.
+			</p>
+			<p>What can histogram do?</p>
+			<p>
+			1. Histogram can be eighter normalized or unnormalized. The former is derived from 				each count divde by the total number of points in data set. The latter is the abslute 				count in that bin.
+			</p>
+			<p>
+			2. Different bin widths are allowed for where data are tightly clustered bin width 				can be narrower, for where only have few data points bin width can be
+			wider.
+			</p>
+			<p>Issues of histogram</p>
+			<p>
+			1. The binning process loses information by replacing the individual data points with 				a bin width.
+			</p>
+			<p>
+			2. Histogram can be made quite diffrently as the point made for figure 2-3.
+			</p>
+			<li>When can KDEs be misleading?</li>
+
+			<p>
+			One pitfall of Kernel Desity Estimates technique might trend to produce none existing 
+			data in particular. For example, an age distribution that includes negative ages.
+			(refer to <a href="https://github.com/clauswilke/dataviz/blob/master/docs/visualizing_distributions_I.md">Visualizing distributions - Claus Wilke</a>)
+			</p>
+			
+			<li>"[CDFs] have less intuitive appeal than histograms of KDEs". What does he mean by 				that?
+			</li>
+			
+			<p>
+			CDF have less immediate intuitive appeal than histogram or KDES, but they allow
+			quantitative statement.
+			CDF do not invole any binning, thus they do not lose information and therefore more
+			faithfully represent data.
+			</p>
+			<li>What is a Quantile plot? What is it good for?</li>
+			
+			<p>
+			A quantile plot is the plot of a CDF in which the x and y axis are switched. Refer 
+			DAOST book figure 2-8.
+			</p>
+			<li>How is a Probablity plot defined? What is it useful for? Have you ever seen one before?</li>
+			<p>gaussian cummulative distribution function</p>
+			<p>
+			y<sub>i</sub> = cdf(x<sub>i</sub>)
+			</p>
+			<p>
+			y<sub>i</sub> = &Phi;((x<sub>i</sub> - &mu;)/&sigma;)
+			</p>
+			<p>
+			x<sub>i</sub> = &mu; + &Phi;<sup>-1</sup>(y<sub>i</sub>)
+			</p>
+			<p>
+			&mu; is the intercept of the curve with y axis, &sigma; is the slope
+			</p>
+
+			<li>Janert is so suspicious of mean, median, and related summary statistics. Explain why one has to be careful when using those - and why visualization of the full data is always better.</li>
+		
+			<p>
+			These summary statistics apply only under certain assumptions, and they may mislead 
+			if the assumptions are not fullfilled.
+			</p>
+			<li>When are box plots most useful?</li>
+			
+			<p>
+			Box plots does not show distrubution as much detail as hitogram does, but it is 
+			especially good at indicating a distribution is skewed and potential outliers in the 
+			datasets.Box plots are also very useful at comparing two or more data sets.
+			</p>
+			<li>The book doesn't mention violin plots. Are those better or worse than box plots? Why?</li>
+			
+			<p>
+			The violin plot could show more information than box plot such as while box plot only 
+			shows symmary statistics mean/median and interquartile ranges.
+			</p>
+			<h2>Part 2: DAOST Chapter 3 Questions</h2>
+			<li>Looking at Fig 3-1, Janert writes "the data itself shows clearly that the amount of random noise in the data is small". What do you think his argument is?</li>
+			
+			<p>
+			In figure 3-1, there is no obvious fluctuate point in the plot and the shape of the 			graph is relative regular and smooth, and there is a significative relationship among 				points.
+			</p>
+			<li>Can you think of a real-world example of a multivariate relationship like the one in Fig 3-3 (lower right panel)?</li>
+			
+			<p>
+			</p>
+			<li>What are the two methods Janert metions for smoothing noisy data? Can you think of other ones?</li>
+			
+			<p>Weighted splinesand & Loess</p>
+			<p>
+			Other one – binning: Sort the data and put sorted data into different bin (bucket), 			and smooth them by using mean value of each bucket.
+			</p>
+			<li>What are residuals? Why is it a good idea to plot the residuals of your fit?</li>
+			
+			<p>
+			Residual is the difference between smoothing model and data. According to the 				residuals we can check our smooth model whether it’s suitable or not.
+			</p>
+			<li>Explain in your own words the point of the smooth tube in figure 3-7.</li>
+			
+			<p>
+			The top line is the smooth line of points, which created the positive residuals, and 				the bottom one is the smooth line of points that created the negative residuals, and 				in total, the tube implement the interval that most data point is located here. 
+			</p>
+			<li>What kind of relationships will a semi-log plot help you discover?</li>
+			
+			<p>
+			It helps me to discover the relationship between the x value and the logarithmic of x 				value (but the axis is shown as real value). The relative change is same and stable 			even the absolute change is huge.
+			</p>
+			<li>What kind of functions will loglog plots help you see?</li>
+			
+			<p>
+			The loglog plots shows both logarithmic value in two axis, and it will help to show 			the data, which include the huge order of magnitudes data.
+			</p>
+			<li>What the h#ll is banking and what element from our visual system does it use to help us see patterns? What are potential problems with banking?</li>
+			
+			<p>
+			Banking is the graphic way that adjusts the ratio of height and width to make most of 				lines 45 degree in order to present more details of data.
+			</p>
+			<p>Element: Change the degree of graph</p>
+			<p>
+			Potential problems: The ratio of height and width maybe become oversize (like 				square), so that the showing of graph will be badly. 
+			</p>
+			<li>Sune think figure 3-14 makes an important point about linear fits that is rarely made. What is it? </li>
+			
+			<p>
+			One input maybe have two output, so it is not the best fit.
+			</p>
+			<li>Summarize the discussion of Graphical Analysis and Presentation Graphics on pp. 68-69 in your own words.</li>
+			
+			<p>
+			Graphical analysis is the process that we want to find the rule and discover the 				connotative information that after we get a mount of new data.
+			</p>
+			<p>
+			As for Presentation Graphics, we can also see from the name that we have already 				known the connotative info of data and in this step we want to implement the data as 				clearly as possible, such using the suitable explanation and format to demonstrate 				the graph.
+			</p>
+			<h2>Part 3: Viz 1</h2>
+			 <script type="text/javascript">
+		var dataset;
+		var set0 = [];//fresh fruit
+		var set1 = [];//storage fruit
+		var set2 = [];//fresh veggi 
+		var set3 = [];//storage veggi
+
+//x-axis scale
+		var w = 800
+		var h = 300
+		var xaxis = d3.scaleLinear()
+		  		  .domain([0, 12])
+		  		  .range([0, 800]);
+
+//y-axis scale
+
+		var yaxis =  d3.scaleLinear()
+		  		  .domain([0, 50])
+		  		  .range([h, 0]);
+
+		//console.log(xaxis(1))
+
+//data
+		var classify  = function(d, n) {
+			var tmpSet = [];
+			for (i=0; i<d.length; i++){
+				if (parseInt(d[i].Index) == n) {
+					tmpSet.push(parseInt(dataset[i].Count))
+				} else { continue;}
+			}
+			return tmpSet;
+		}
+
+		d3.csv("IQuantNY.csv", function(error, data) {
+				if (error) {
+				console.log(error);
+			} else {
+				console.log(data);				
+			}
+			dataset = data;
+			set0 = classify(dataset, 0);
+			set1 = classify(dataset, 1);
+			set2 = classify(dataset, 2);
+			set3 = classify(dataset, 3);
+			//console.log(dataset);
+			console.log(set3);
+			var svg = d3.select("body")
+					.append("svg")
+					.attr("width", w+100)
+					.attr("height", h+100)
+					.append("g")
+					.attr("transform", "translate(220, 50)");
+			svg.selectAll("rect")
+				.data(set3)
+			   	.enter()
+			   	.append("rect")
+			   	.attr("x", function(d,i) {return xaxis(i)+xaxis(1)/3;})
+   				.attr("y", function(d) {return yaxis(d);})
+   				.attr("width", 20)
+   				.attr("height", function(d) {return h-yaxis(d);})
+				.attr("fill", "rgb(0, 150, 0, 0.25)");
+//x axis
+			svg.append("g")
+			  .attr("class", "axis")
+			  .attr("transform", "translate(0," + h + ")")// the axis coordination
+			  .call(d3.axisBottom(xaxis))
+			  .selectAll("text").remove();
+
+			svg.append("g")
+			  .attr("class", "axis")
+			  .attr("transform", "translate(0, 0)")// the axis coordination
+			  .call(d3.axisLeft(yaxis));
+			})
+        </script>
+			
+		<!--
+		<h1>Study of I Quant NY</h1>
+		<p> This is a reproduction of <a href="http://iquantny.tumblr.com/post/129373499164/this-is-quantifiably-the-best-month-to-go-to-the">I Quant NY.
+		</p>
+		-->
+	</article>
+	<!--
+	<footer>Assignment1</footer>
+	-->	
+	</div>
+    </body>
+</html>

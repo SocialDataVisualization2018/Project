@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Drawing divs with data</title>
+        <script type="text/javascript" src="../d3/d3.js"></script>
+		<!-- div css-->
+		<style type="text/css">
+			div.bar {
+				display: inline-block;
+				width: 20px;
+				height: 75px;
+				background-color: teal;		
+			}
+		</style>
+    </head>
+    <body>
+        <script type="text/javascript">
+        	var dataset = [ 5, 10, 15, 20, 100];
+			d3.select("body").selectAll("div")
+				.data(dataset)
+				.enter()
+				.append("div")
+				.attr("class", "bar")
+				.style("height", function(d) { return d + "px"; });
+
+			d3.csv("num.csv", function(error, data) {
+				if (error) {
+					console.log(error);
+				} else {
+					console.log(data);				
+				}
+				dataset = data;
+				
+			})
+        </script>
+		<!-- HTML DIV -->
+		<div class="bar"></div>
+		<div style="display: inline-block;
+            		width: 20px;
+            		height: 75px;
+            		background-color: teal;">
+		</div>
+		
+    </body>
+</html>

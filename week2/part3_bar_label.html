@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Drawing divs with data</title>
+        <script type="text/javascript" src="../d3/d3.js"></script>
+		<!-- div css-->
+		<style type="text/css">
+			div.bar {
+				display: inline-block;
+				width: 20px;
+				height: 75px;
+				background-color: teal;	
+				margin-right: 2px;	
+			}
+		</style>
+    </head>
+    <body>
+        <script type="text/javascript">
+        	var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+                		   11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+			//var dataset;
+			var divBar = function(data) {
+				d3.select("body").selectAll("div")
+					.data(dataset)
+					.enter()
+					.append("div")
+					.attr("class", "bar")
+					.style("height", function(d) { 
+						//var barHeight = d.Data*5;	//scale up for csv data
+						var barHeight = d*5;
+						return barHeight + "px"; 
+					});
+			}
+			//divBar(dataset); old chart
+			//d3.csv("num.csv", function(error, data) {
+			//	if (error) {
+			//		console.log(error);
+			//	} else {
+			//		console.log(data);				
+			//	}
+			//	dataset = data;
+			//	divBar(dataset);
+			//})
+
+			var w = 500;
+			var h = 100;
+			var barPadding = 1;
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			svg.selectAll("rect")
+			   .data(dataset)
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d, i) {
+					//return i*21;//21 pixels to right 20 bars in total					   1
+					return i * (w/dataset.length);// 20 bars evenly spread over 500 pixel; 2
+				})
+			   //.attr("y", 0) off set y
+			   .attr("y", function(d) {
+					return h - d*4;
+				})
+			   //.attr("width", 20)							//bar wudtg 20 pixel 		   3
+			   .attr("width", w/dataset.length - barPadding)//bar width 24 pixel 		   4
+			   //.attr("height", 100);		//constant height
+			   .attr("height", function(d) {//data driven height
+					return d*4;			   
+				})
+			   .attr("fill", function(d) {
+					return "rgb(0, 0, " + (d*10) + ")";	//data driven strength of blue color		
+				})
+				
+			svg.selectAll("text")
+			   .data(dataset)
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+					return d;
+				})
+			   .attr("x", function(d, i) {
+					return i*(w/dataset.length)+5;
+				})
+			   .attr("y", function(d) {
+					return h-d*4+15;	//put into the bar
+				})
+			   .attr("font-size", "11px")
+			   .attr("fill", "white");
+        </script>
+    </body>
+</html>
