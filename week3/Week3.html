@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Week3 Exercise</title>
+      <script type="text/javascript" src="../d3/d3.js"></script>
+		<!-- div  background-color: red; css-->
+      <link rel="stylesheet" type="text/css" href="html_style.css">
+    <!-- style css end-->
+
+    <!-- Top boarder-->
+    <body>
+		<header>Week3</header>
+    </body>
+    <!-- top boarder end-->
+    <!-- Part 2 start -->
+    <section id="part1">
+    <h1>Part1</h1>
+    <body>
+    <section id="chp7">
+		<article>
+    <!-- Part 2 chapter 7 -->
+      <h2>Exercise: Questions for chapter 7</h2>
+      <ol>
+      <li>Explain in your own words: What is the point of scales?
+        <p>
+            The scale is the mark of the axies. It is a translation of the value
+            and their representation on the graph. The scale below is an actual
+            function.
+            <br>
+            <pre>
+              var scale = d3.scaleLinear()      //D3 linear scale function <br>
+                            &nbsp .domain([0, 50])   //data unit <br>
+                            &nbsp .range([100, 0])       //display unit <br>
+              console.log(scale(50));  //returns display unit 0
+            </pre>
+        </p>
+      </li>
+
+      <li>
+          Why are d3.min() and d3.max() useful? And what's the accessor
+          function? When do you need that?
+          <p>
+            <pre>
+              var arrayNum = [3, 7, 9, 10]; //array declaration <br>
+              d3.max(arrayNum);             //returns 10  <br>
+              d3.min(arrayNumb);            //returns 3 <br>
+              //accessor functions <br>
+              var pairData = [[5, 20], [400, 500], [200, 100]]; // array of pairs <br>
+              var xMax = d3.max(pairData, function(d) {         // d3.max() accessor function <br>
+                return d[0];                                    // return max of first element among the array of pair <br>
+              }                                                 <br>
+            </pre>
+            <p>
+              The d3.max() or d3.min() is usefor for setting the x,y axis with out
+              knowing the maximun or minimun value among large dataset.
+            </p>
+          </p>
+      </li>
+
+      <li>What is Bostock's margin convention mentioned on page 125?
+        <p>
+          1. The margin convention is to first setup the margins for top, right,
+          bottom and left. <br>
+          <pre>var margin = {top: 20, right: 10, bottom: 20, left: 10}; <br></pre>
+       </p>
+       <p>
+         2. Then define graph width with actual display unit which substracted by the
+         left and right margin. For the height, the display unit has to substract
+         with top and bottom margin. <br>
+         <pre>
+           var width = 960 - margin.left - margin.right; <br>
+           var height = 500 - margin.top - margin.bottom;  <br>
+         </pre>
+       </p>
+       <p>
+         3. Lastly, define the svg actual width, height and transform.  <br>
+         <pre>
+           var svg = d3.select("body").append("svg") <br>
+           .attr("width", width + margin.left + margin.right) <br>
+           .attr("height", height + margin.top + margin.bottom) <br>
+           .append("g")  <br>
+           .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); // to set where the svg locates.
+         </pre>
+       </p>
+      </li>
+
+      <li>
+          Can you mention an example when you might need other scales than linear?
+          <p>
+              Other than linear scale, the scale I could think of are logarithmic
+              scale: scalelog(), square root scale: scaleSqrt() and ordinal scale: scaleOrdinal().
+          </p>
+      </li>
+
+      <li>
+          How do you convert strings to Date objects? When is it good to check
+          that your conversion works? Do you have to be extra careful with Danish
+          dates? Why?
+          <p>
+             d3 converting string to dates
+              <pre>
+              var parseTime = d3.timePare(%m/%d/%y);  //returns month, date, year
+              </pre>
+          </p>
+      </li>
+      </ol>
+      </article>
+      </section>
+      </body>
+      <!-- Part2 chapter 7 end -->
+
+      <!-- Part2 chapter 8 start -->
+      <body>
+      <section id="chp8">
+      <article>
+      <h2>Exercise: Questions for chapter 8</h2>
+      <ol>
+      <li>
+          Explain in your own words: What is the point of axes?
+          <p>
+              The point of axes(axis) in data visualization could be represent as
+              reference line on a 2 diamentional graph such as x,y axis. <br>
+              //Setting up axis
+              Setting up axis needs to choose a axis style, for e.g. d3.axisBottom().
+              Associates with the scale function then an axis is set up, for e.g.:
+              <pre>
+                  var xAxis = d3.axisBottom().scale(xScale)
+              </pre>
+              Finally, the axis need to be generated for svg graph by:
+              <pre>
+                  svg.append('g').call(xAxis);
+              </pre>
+          </p>
+      </li>
+
+      <li>
+          On page 136-7, Scott notes: "You might be wondering why this looks
+          so different from our friendly scale functions". Answer in your own
+          words.
+          <p>
+            The reason for the difference compare to the friendly scale functions
+            is, axis() function actually draw the axis based on the scale function.
+            This is different then the scale() function. <br>
+          </p>
+
+          <p>
+            So what does the code svg.append('g') do? 'g' stands for group element
+            unlike other SVG 'circle' and 'rect' 'g' have is invisible by itself. <br>
+          </p>
+
+          <p>
+            There are about two reasons to use svg.append('g'). The first one is
+            to keep the code nice and tidy, the second is to apply transformation
+            to the group which affects the visual elements with in the group. <br>
+          </p>
+      </li>
+
+      <li>
+          What are SVG transformations?
+          <p>
+              The SVG transformations can be perfomed by setting up the element's
+              transform attribute. The transform attribute is allow to locate the SVG
+              graph to a desired location on the webpage. The example can be found in
+              <a href="#chp7">question 3</a> from chapter 7.
+          </p>
+      </li>
+
+      <li>
+          Why might D3 give you different axes-ticks than you ask for?
+          <p>
+              Without any instruction of the tick format for the axis, D3 will exam
+              the given scalse and make judgement itself about how many ticks would
+              show on the axis.
+          </p>
+      </li>
+      </ol>
+      </article>
+      </section>
+      </body>
+      <!-- Part2 chapter 8 end -->
+
+      <!-- Part2 chapter 9 start -->
+      <body>
+      <section id="chp9">
+      <article>
+      <h2>Exercise: Questions for chapter 9</h2>
+      <ol>
+
+      <li>
+          Explain in your own words, what is an ordinal scale? When do you
+          need it?
+          <p>
+            Ordinal scale is D3 scale function for scaling as given data in a sequence.
+            It is espetially good at nonquantitative scaling.
+          </p>
+      </li>
+
+
+      <li>
+        If you were plotting data related to months (Jan, Feb, ... , Dec), would
+        you use time-based scales or ordinal scales? Justify your answer.
+        <p>
+          <pre>
+            var MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+          </pre>
+          For showing monthly data, scaleOrdinal could be convient since it doesnt
+          neccessary to be exact at which year and time.<br>
+          scaleLinear:
+          <pre>
+
+          </pre>
+          sclaOrdinal:
+          <pre>
+            var xScale = d3.scaleOrdinal()
+                    		   .domain(MONTH)
+                    		   .range([0, 400])
+
+            console.log(xScale("Jan"))  // returns the diplay unit on the webpage for January
+          </pre>
+        </p>
+      </li>
+
+      <li>
+          What is your favorite D3 transition?
+          <p>
+            easeLinear can do the job. But there are also other transitions for e.g. pure duration,
+            easeCircleIn, easeElasticOut and easeBounceOut. <cite>IDV</cite> Transitions in chapter 9.
+          </p>
+
+      </li>
+    </ol>
+    </article>
+    </section>
+    </body>
+    <!-- Part 2 chp9 end-->
+    </section>
+
+    <body>
+    <article>
+    <ul>
+      <li>
+          4. Under what circumstances do you need to update your scale while doing
+          transtions?
+
+          <p>
+            Whenever updating graph with new datasets, the maximum value of the new datasets could
+            change either larger or smaller. When the new maximum value of the data sets is larger than old
+            datasets, if the scale is not updated, then the graph could become strange. <cite>IDV</cite>
+            Updating scales in chapter 9.
+          </p>
+      </li>
+    </article>
+    </ul>
+    </body>
+
+    <body>
+    <article>
+    <ul>
+      <li>
+          5. Under what circumstances do you need to update your axes while doing
+          transtions? What's the point of on()?
+          <p>
+            Whenever to update the graph with new datasets, since the value of the
+            new datases could change, therefore the axes need to be updated as well.
+            The point of on() function is to define the start or end of the transition.
+            <cite>IDV</cite> on() in chapter 9.
+            </section>
+          </p>
+      </li>
+    </ul>
+    </article>
+    </body>
+
+    <body>
+    <article>
+    <ul>
+      <li>
+          6. Can you think of a real-world situation where you might want to
+          add/remove bars to/from your histogram?
+          <p>
+            To remove data bar might be perfomed as shift out the element is the dataset array.
+            <pre>
+              dataset.shift();  //
+            </pre>
+          </p>
+          <p>
+            To add data bar might be perfomed as add elemetn to the the dataset array.
+            <pre>
+              dataset.push(newNumber);
+            </pre>
+          </p>
+      </li>
+    </ul>
+    </article>
+    </body>
+
+    <body>
+    <article>
+    <ul>
+      <li>
+          7. Why might you want to use a key function when adding/removing data?
+      </li>
+    </ul>
+    </article>
+    </body>
+
+      <body>
+      <article>
+        <p id="add">Add a new data value</p>
+        <p id="remove">Remove a data value</p>
+        <script type="text/javascript" src="./JSfile/dynamic.js"></script>
+      </article>
+      </body>
+
+    </ul>
+    </article>
+    </section>
+    </body>
+    <!-- Part 2 chp9 end-->
+    </section>
+      <!-- Part 2 end-->
+
+    <h1>Part3: Recreating a website</h1>
+    <body>
+    <article>
+    <p>
+      The graph is reproduciton of the article from <a href="http://iquantny.tumblr.com/">I Quant NY</a>.
+    </p>
+    </article>
+    </body>
+    <body>
+    <article>
+      <script type="text/javascript" src="./JSfile/part3_before_label.js"></script>
+    </article>
+    </body>
+
+  <body>
+	   <footer>Week3</footer>
+  </body>
+</head>
+</html>

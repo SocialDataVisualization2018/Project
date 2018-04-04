@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Ordinal Scales</title>
+    <style>
+        body {
+            font: 10px sans-serif;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: grey;
+        }
+
+        div {
+            height: 50px;
+            font-size: x-large;
+            text-align: right;
+            color: white;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<h2>Discrete Input Domain &rarr; Discrete Output Range</h2>
+<script type="text/javascript" src="../d3/d3.js"></script>
+<script>
+var MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+var scaleLin = d3.scaleLinear()
+               .domain([0, 12])
+               .range([0, 400])
+var xAxis = d3.axisBottom()
+              .scale(scaleLin)
+              .tickFormat(function(d,i){return MONTH[i];});
+console.log(scaleLin(1)); //
+
+var scaleOrd = d3.scaleLinear()
+              .domain([0, 50])
+              .range([100, 0])
+
+console.log(scaleOrd(50)); //
+
+var scaleBan = d3.scaleBand() //discrete ranges
+                 .domain(d3.range(MONTH.length))
+                 .range([0.400])
+                 .round(true) //rounding
+                 .paddingInner(0.05); //percentage of width of each band will be used as spacing 
+
+
+</script>
+
+</body>
+</html>

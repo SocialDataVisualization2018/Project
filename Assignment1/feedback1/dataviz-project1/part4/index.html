@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    DataViz: "Home" &middot; dataviz.io
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles/poole.css">
+  <link rel="stylesheet" href="/styles/syntax.css">
+  <link rel="stylesheet" href="/styles/lanyon.css">
+  <link rel="stylesheet" href="/part4/styles/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <script charset="utf-8" src="./lib/d3/d3.js"></script>
+</head>
+
+
+<body>
+
+  <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+  <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+  <!-- Toggleable sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-item">
+      <p></p>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <a class="sidebar-nav-item " href="/">
+        Home
+      </a>
+
+      <a class="sidebar-nav-item " href="/part1/">
+        Part 1 and Part 2: DAOST Chapter 2 Questions and DAOST Chapter 3 Questions
+      </a>
+
+      <a class="sidebar-nav-item " href="/part3/">
+        Part 3: Viz 1
+      </a>
+
+      <a class="sidebar-nav-item " href="/part4/">
+        Part 4: Viz 2
+      </a>
+    </nav>
+
+    <div class="sidebar-item">
+      <p>
+        &copy; 2018. All rights reserved.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+  <div class="wrap">
+    <div class="masthead">
+      <div class="container">
+        <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+        <h3 class="masthead-title">
+          <a href="/" title="Home">dataviz.io</a>
+          <small>02806 Social Data Analysis and Visualization</small>
+        </h3>
+      </div>
+    </div>
+
+    <div class="container content">
+      <div class="post">
+        <p>
+          <h3 class="post-title">
+            Boston Marathon Winning Times
+          </h3>
+        </p>
+      </div>
+      <div class="twelve columns" id="marathon-viz">
+        <section class="header">
+          <p class="title">
+            <strong>Boston Marathon winning times 1897-2017</strong>
+          </p>
+        </section>
+      </div>
+      <div class="row">
+        <div id="plot-description">
+          <p class="figure-text">
+            <strong>Figure 1:</strong> Boston Marathon winning times 1897-2017 plotted for male runners, and female runners where
+            applicable. Dashed line segments show linear fits that were applied to the data leading up to 1990.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Figure 1 attempts to visualize the overall trend in winning times at the Boston Marathon from 1897 to 2017. Data points are
+        colored in by runner's gender. A linear fit has been applied to a subset of the data-- 1897-1990 for male runners,
+        1966-1990 for female-- via the least squares method and is visualized as a dashed line segment for each gender.
+      </p>
+      <p>
+        <i>The plot in figure 1 is an attempt at recreating Figure 3-5, Janert:</i>
+        Data Analysis with Open Source Tools
+        <i>, p. 54.</i>
+      </p>
+    </div>
+  </div>
+
+  <div id="tooltip" class="hidden">
+    <p>
+      <strong>
+        <span id="name"></span>
+      </strong>
+    </p>
+    <p>
+      Year:
+      <span id="year"></span>
+    </p>
+    <p>
+      Country:
+      <span id="country"></span>
+    </p>
+    <p>
+      Time:
+      <span id="time"></span>
+    </p>
+    <p>
+      Sex:
+      <span id="sex"></span>
+    </p>
+  </div>
+
+  <script src="./src/app.js"></script>
+</body>
+
+</html>

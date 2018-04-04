@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+  <title>Marathon Plot</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="./styles/main.css" />
+  <script src="./lib/moment.js"></script>
+  <script charset="utf-8" src="./lib/d3/d3.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns" id="marathon-viz">
+        <div id="legend" class="hidden">
+          <table>
+            <col width="10">
+            <col width="100">
+
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="symbol">
+                    <svg width="10px" height="10px">
+                      <rect class="male plot-point" width="6px" height="6px" x="3px" y="3px"></rect>
+                    </svg>
+                  </div>
+                </td>
+                <td id="legend-male">
+                  Male runner
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="symbol">
+                    <svg width="10px" height="10px">
+                      <circle class="female plot-point" cx="6px" cy="6px" r="3px"></circle>
+                    </svg>
+                  </div>
+                </td>
+                <td id="legend-female">
+                  Female runner
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <section class="header">
+          <p class="title">
+            <strong>Marathon finishing times</strong>
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="plot-description">
+        <p class="figure-text">
+          <strong>Figure 1:</strong> Boston marathon data plotted for male and female runners. Hover mouse over a datapoint to show
+          detailed information. Click elements in legend to show/hide each group of data points.
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+    </div>
+  </div>
+
+  <div id="tooltip" class="hidden">
+    <p>
+      <strong>
+        <span id="name"></span>
+      </strong>
+    </p>
+    <p>
+      Year:
+      <span id="year"></span>
+    </p>
+    <p>
+      Country:
+      <span id="country"></span>
+    </p>
+    <p>
+      Time:
+      <span id="time"></span>
+    </p>
+    <p>
+      Sex:
+      <span id="sex"></span>
+    </p>
+  </div>
+
+
+
+  <script src="./src/app.js"></script>
+</body>
+
+</html>

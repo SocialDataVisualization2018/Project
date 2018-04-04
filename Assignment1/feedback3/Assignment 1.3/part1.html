@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<!--
+    Spatial by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+    <head>
+        <title>Assignment 1 - Social Data and visualization</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="assets/css/stylesheet.css" />
+    </head>
+    <body class="landing">
+
+        <!-- Header -->
+            <header id="header" class="alt">
+                <h1><a href="index.html">Assignment 1</a></h1>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="part1.html">Part 1</a></li>
+                        <li><a href="part2.html">Part 2</a></li>
+                        <li><a href="part3.html">Part 3</a></li>
+                        <li><a href="part4.html">Part 4</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Banner -->
+			<section id="banner">
+				<h2>Assignment 1 - Part 1</h2>
+				<p>02806 Social Data Analysis And Visualization <br> To see Parts 1 to 4 press the links in Nav bar</p>
+				<ul class="actions">
+					<li><a href="#main" class="button special big">Answers for questions</a></li>
+				</ul>
+			</section>
+            <section id="main" class="wrapper">
+                <div class="container">
+
+                    <header class="major special">
+                        <h2>Part 1: DAOST Chapter 2 Questions</h2>
+                    </header>
+                    <ol>
+                        <li>
+                            <h4>
+                                Explain in your own words the point of the jitter plot.
+                            </h4>
+                            <p>
+                              The jitter plot is used to show distribution of univariate data on a chart. When data is discrete, the values can overlap. Jittering prevents that and enables us to see density patterns/features (e.g. clusters) of all considered data.
+
+                              Unfortunately, It is mostly useful in case of small amounts of data, as such a chart gets easily unreadable when plotting bigger datasets. Moreover, jitter plots do not help to see precise quantity of occurrences.
+
+                        </li>
+
+                        <li>
+                            <h4>
+                                Explain in your own words the point of figure 2-3.
+                            </h4>
+                            <p>
+                              Histograms may look different even if they describe the same data. The reason for this is that every histogram has two parameters: bin width and alignment of the bins. If these parameters are ill-chosen it may result in poor visualization. There is no golden rule to follow because of the huge variety of data so we should use common sense to pick the best parameters.
+                        </li>
+						<li>
+                            <h4>
+                                The author of DAOST (Philipp Janert) likes KDEs. When can KDEs be misleading?
+                            </h4>
+                            <p>
+                                KDE may be misleading in cases where the data has an irregular distribution: they may show occurrences of the data where there may actually be none. Using AMISE may minimize the error, but it would still be hard to interpret where the data actually is. Moreover, KDEs will be misleading when we are dealing with small data samples as we cannot be sure about density trace that KDE approximates. Finally the AMISE method doesn’t solve the problem of bandwidth size entirely. Data can be easily over-smooth or under-smooth and we should use common sense when picking right size.
+							</p>
+						</li>
+
+						<li>
+                            <h4>
+                                I've discussed some strengths of the CDF - there are also weaknesses. Janert writes "[CDFs] have less intuitive appeal than histograms or KDEs". What does he mean by that?
+                            </h4>
+                            <p>
+                              KDEs tell us how probable it is to find a data point with a certain value whereas CDFs tell us “how much of data” have occurred until a certain point. It is less intuitive because the human mind is better at understanding probabilities of occurrences than to sum up contributions. This is illustrated by the fact that we are “better at judging distances than areas”.
+
+							</p>
+						</li>
+
+						<li>
+                            <h4>
+                                What is a Quantile plot? What is it good for.
+                            </h4>
+                            <p>
+                              Quantile plot is a CDF graph that has percentile values of occured data on the horizontal axis. Although it contains the same data as CDF, it makes it easier to interpret what amount of data corresponds to the nth percentile.
+                           	</p>
+						</li>
+
+						<li>
+                            <h4>
+                                How is a Probability plot defined? What is it useful for? Have you ever seen one before?
+                            </h4>
+                            <p>
+                              A probability plot is defined as the inverse of the CDF function by the distribution. Its point is to asses if a dataset follows specific distribution. If the result plot falls on the straight line at 45 degree angle we can affirm that scattering are the same. Any deviation from the line is caused by differences between compared data. It is used among the others to check quality of pseudo-randomly generated variable or to determine if residuals after regression performance have a Gaussian distribution.
+
+							</p>
+						</li>
+
+						<li>
+                            <h4>
+                                One of the reasons I like DAOST is that Janert is so suspicious of mean, median, and related summary statistics. Explain why one has to be careful when using those - and why visualization of the full data is always better.
+                            </h4>
+                            <p>
+                              Summary statistics may be useful just under few requirements regarding the data. Analyzed data’s distribution should be unimodal and the data itself should be symmetric and free of outliers. Otherwise, calculated statistics may not expose correct features and lead to wrong conclusions. Using quartiles and percentiles is more flexible and robust approach but may bring ambiguity in to the data summary. To avoid that we should use definition of percentile in terms of CDF.
+
+							</p>
+						</li>
+
+
+						<li>
+                            <h4>
+                                When are box plots most useful?
+                            </h4>
+                            <p>
+                              Box plots emphasizes the overall structure of the data so they are most useful when comparing several distribution against each other. Often used when the data is broken down by different categories.
+						</li>
+					    <li>
+                            <h4>
+                                The book doesn't mention violin plots. Are those better or worse than box plots? Why?
+
+                            </h4>
+                            <p>
+                              It depends on the size of the data and what we want to expose. For big samples of data violin plots have an advantage because they can show density trace of distribution. Nevertheless this technique distorts curves for small sample of observations so it is better to use box plot in these cases. A second issue occurs when comparing scattering of different categories of the data. In set of box plots it is possible to attach information regarding the number of observations for each of the categories and width of each ‘cat eye’ in violin plot will always look the same.
+
+                           </p>
+						</li>
+                   </ol>
+
+                </div>
+            </section>
+
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/skel.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+
+    </body>
+</html>

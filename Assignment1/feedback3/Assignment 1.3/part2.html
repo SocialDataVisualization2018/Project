@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<!--
+    Spatial by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+    <head>
+        <title>Assignment 1 - Social Data and visualization</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="assets/css/stylesheet.css" />
+    </head>
+    <body class="landing">
+
+        <!-- Header -->
+            <header id="header" class="alt">
+                <h1><a href="index.html">Assignment 1</a></h1>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="part1.html">Part 1</a></li>
+                        <li><a href="part2.html">Part 2</a></li>
+                        <li><a href="part3.html">Part 3</a></li>
+                        <li><a href="part4.html">Part 4</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+        <!-- Banner -->
+            <section id="banner">
+                <h2>Assignment 1 - Part 2</h2>
+                <p>02806 Social Data Analysis And Visualization <br> To see Parts 1 to 4 press the links in Nav bar</p>
+                <ul class="actions">
+                    <li><a href="#two" class="button special big">Look at data</a></li>
+                </ul>
+            </section>
+            <section id="main" class="wrapper">
+                <div class="container">
+
+                    <header class="major special">
+                        <h2>Part 2: DAOST Chapter 3 Questions</h2>
+                    </header>
+                    <ol>
+                        <li>
+                            <h4>
+                                Looking at Fig 3-1, Janert writes "the data itself shows clearly that the amount of random noise in the data is small". What do you think his argument is?
+                            </h4>
+                            <p>
+                              The data of Fig 3-1 behave repeatedly and creates a parabolic pattern. We can also notice that succeeding repetitions behave in the same way. From that point we can conclude that the data has relatively small noise. If the noise was bigger, it would distort any kind of   repetitive behaviour.
+
+                        </li>
+
+                        <li>
+                            <h4>
+                                Can you think of a real-world example of a multivariate relationship like the one in Fig 3-3 (lower right panel)?
+                            </h4>
+                            <p>
+                              For instance the financial results of two companies from the same branch. They have similar loss tendency until one of them changes strategy and achieves success. Other example may be elevation of people on a mountain expedition when they divide the group to choose different paths. More general real-world example is voting. There are different notion to vote on as specific candidate.
+                        </li>
+						<li>
+                            <h4>
+                                What are the two methods Janert metions for smoothing noisy data? Can you think of other ones?
+                            </h4>
+                            <p>
+                              Weight splines and LOESS. The former technique focuses on an overall smoothness and the latter approximates the data locally.  Another way to make data less noisy is to use Kalman filter that uses a series of measurements observed over time. Thanks to that we may produce value that is estimation of several measurement and it is more accurate. Also in signal processing are widely use digital filters that reduce or enhance certain aspects of that signal.
+
+						</li>
+
+            <li>
+                            <h4>
+                                What are residuals? Why is it a good idea to plot the residuals of your fit?
+                            </h4>
+                            <p>
+                              Residuals are the difference between an approximated function that describes our data and their actual value. It is good idea to plot residual values, because if the obtained data form a systematic trend then it suggests that the approximation does not describes the data accurately.
+
+             </p>
+           </li>
+
+						<li>
+                            <h4>
+                                Explain in your own words the point of the smooth tube in figure 3-7.
+                            </h4>
+                            <p>
+                              Computation of a smooth tube is a technique to validate if some outliers have malformed the approximation curve. If the width of band changes along the curve it means that some values that lie far from approximation might have strong impact on one of tube’s edges. Majority of the point should be inside the tube.
+
+							</p>
+						</li>
+
+
+
+						<li>
+                            <h4>
+                                What kind of relationships will a semi-log plot help you discover?
+                            </h4>
+                            <p>
+                              Plotting logarithm of y as a function of x will help to discover if y is in power-law or exponential relation with x. It is possible thanks to feature of logarithm that simplifies this kind of relationships and enables to see large variation of the data in a graph.                           	</p>
+						</li>
+
+						<li>
+                            <h4>
+                                What kind of functions will loglog plots help you see?
+                            </h4>
+                            <p>
+                               Double logarithm graph helps to recognize power-law functions. This kind of relationship between features of data are represented as a straight lines on the graph accordingly to the nature of logarithms.
+							</p>
+						</li>
+
+						<li>
+                            <h4>
+                                What the h#ll is banking and what element from our visual system does it use to help us see patterns? What are potential problems with banking?
+                            </h4>
+                            <p>
+                              It is a graphical technique that adjust the aspect ratio of the plot to show function slopes in an approximate 45 degree angle. This change exposes patterns that would be invisible if the curve were too steep. Nevertheless, shrinking of the axis may cause in loss of information. It may cause a distortion of the presented data and hide other crucial details of the function.
+
+						</li>
+
+					    <li>
+                            <h4>
+                                I think figure 3-14 makes an important point about linear fits that is rarely made. What is it?
+
+                            </h4>
+                            <p>
+                              Linear regression is not a “miracle solution” because, as the figure shows in this example, linear fit can seemingly work both ways (x vs y and y vs x) even though it may not mean anything.
+
+                           </p>
+						</li>
+                        <li>
+                            <h4>
+                                Summarize the discussion of Graphical Analysis and Presentation Graphics on pp. 68-69 in your own words.
+
+                            </h4>
+                            <p>
+                              The purpose of Graphical Analysis is to expose new information regarding the data. This stage focuses on the data analysis. Main activity is to plot the data from every possible perspective and extract all noticeable features.
+
+                              Presentation Graphics’ goal is to display analysed data in the way they will communicate clearly extracted features. At this stage we use decoration techniques in order to clarify visualization.
+
+                           </p>
+                        </li>
+                   </ol>
+
+                </div>
+            </section>
+
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/skel.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
