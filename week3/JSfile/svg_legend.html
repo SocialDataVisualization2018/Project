@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>part3</title>
+        <script type="text/javascript" src="../../d3/d3.js"></script>
+		<style>
+			.grid line {
+  				stroke: lightgrey;
+  				stroke-opacity: 0.7;
+  				shape-rendering: crispEdges;
+			}
+			.grid path {
+  				stroke-width: 0;
+			}
+
+			svg {
+			  margin-left: 200px;
+			  margin-right: 170px;
+			  padding: 1em;
+			  border-style:solid;
+			  border-width:2px;
+			  overflow: hidden;
+			}
+
+rect {
+	fill: teal;
+}
+.dropdown .option {
+  display:none;
+}
+.dropdown rect{
+  stroke-width:0.5;
+  stroke:rgb(0,0,0)
+}
+.dropdown:hover .option {
+  display:unset;
+}
+.dropdown {
+  cursor:pointer;
+}
+		</style>
+    </head>
+    <body>
+
+    	<script type="text/javascript">
+
+var buttonNames = ["button 1", "button 2", "button 3", "button 4"];
+var l=4;
+for(i=0;i<buttonNames.length;i++){if(l<buttonNames[i].length)l=buttonNames[i].length};
+var width = 400, height = 300;
+l=l*10;
+var svg = d3.select("body")
+	.append("svg")
+	.attr("width", width)
+	.attr("height", height)
+  .append("g")
+  .attr("class","dropdown");
+select = svg.append("g")
+  .attr("class","select");
+select.append("rect")
+  .attr("x", 10)
+	.attr("y",  10 )
+	.attr("width", l)
+	.attr("height", 30);
+select.append("text")
+  .attr("x", 15)
+	.attr("y",30 )
+  .attr("id","mydropdown")
+	.text( buttonNames[0]);
+  
+var options = svg.selectAll(".myBars")
+	.data(buttonNames)
+	.enter()
+	.append("g");
+	
+options.attr("class", "option").on("click", function() { document.getElementById("mydropdown").innerHTML=this.getElementsByTagName("text")[0].innerHTML;
+  d3.event.stopPropagation();
+});
+options.append("rect").attr("x", 10)
+	.attr("y", function(d,i){ return 40 + i*30})
+	.attr("width", l)
+	.attr("height", 30);
+
+ options.append("text").attr("x", function(d){ return 15})
+	.attr("y", function(d,i){ return 60 + i*30})
+	.text(function(d){ return d});
+        </script>
+    </body>
+</html>

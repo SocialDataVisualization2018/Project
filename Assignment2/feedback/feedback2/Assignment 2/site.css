@@ -1,0 +1,18 @@
+body {
+    text-align: center;
+}
+
+article {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.label {
+        font-size: 11px;
+        fill: black;
+        text-anchor: middle;
+}
+
+.svgContainer {
+    display: inline-block;
+}
